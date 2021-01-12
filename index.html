@@ -7,60 +7,51 @@
   </head>
   <body>
     <script>
+      function capitalize(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+
       function computerPlay() {
-        let options = ["rock", "paper", "scissors"];
         let randomInt = Math.floor(Math.random() * 3);
         return options[randomInt];
       }
 
       function playRound(playerSelection, computerSelection) {
-        playerSelection = playerSelection.toLowerCase();
-
-        if (playerSelection == computerSelection) {
-          return "It's a Tie!";
-        } else {
-          switch (playerSelection) {
-            case "rock":
-              if (computerSelection == "scissors") {
-                return "You Win! Rock beats Scissors";
-              } else {
-                return "You Lose! Paper beats Rock";
-              }
-              break;
-            case "paper":
-              if (computerSelection == "rock") {
-                return "You Win! Paper beats Rock";
-              } else {
-                return "You Lose! Scissors beats Paper";
-              }
-              break;
-            case "scissors":
-              if (computerSelection == "paper") {
-                return "You Win! Scissors beats Paper";
-              } else {
-                return "You Lose! Rock beats Scissors";
-              }
-              break;
-            default:
-              return "Wrong input! Try again";
-          }
+        if (playerSelection === computerSelection) {
+          return "Tied";
+        } else if (
+          (playerSelection === "rock" && computerSelection === "scissors") ||
+          (playerSelection === "paper" && computerSelection === "rock") ||
+          (playerSelection === "scissors" && computerSelection === "paper")
+        ) {
+          return "Won";
         }
+        return "Lost";
+      }
+
+      function readPlayerSelection() {
+        let playerSelection = "";
+        while (!options.includes(playerSelection)) {
+          playerSelection = prompt("Choose one: rock, paper or scissors?");
+        }
+        return playerSelection;
       }
 
       function game() {
-        for (let i = 0; i < 5; i++) {
-          const playerSelection = prompt(
-            "Choose one: rock, paper or scissors?"
-          );
-          const computerSelection = computerPlay();
+        let playerSelection = "";
+        let computerSelection = "";
+        let roundResult = 0;
+        for (let i = 1; i <= 5; i++) {
+          playerSelection = readPlayerSelection();
+          computerSelection = computerPlay();
+          roundResult = playRound(playerSelection, computerSelection);
           console.log(
-            "Round " +
-              String(i + 1) +
-              ": " +
-              playRound(playerSelection, computerSelection)
+            `Round ${i}: You ${roundResult}. Computer chose ${computerSelection}`
           );
         }
       }
+
+      const options = ["rock", "paper", "scissors"];
     </script>
   </body>
 </html>
