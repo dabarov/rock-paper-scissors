@@ -1,10 +1,10 @@
 function computerPlay() {
-  const options = ["rock", "paper", "scissors"];
   let randomInt = Math.floor(Math.random() * 3);
   return options[randomInt];
 }
 
 function playRound(playerSelection, computerSelection) {
+  if (!options.includes(playerSelection)) return;
   if (playerSelection === computerSelection) {
     return `Round tied: both chose ${computerSelection}`;
   } else if (
@@ -22,16 +22,23 @@ function playRound(playerSelection, computerSelection) {
 function respondOnPlayersChoice(event) {
   playerSelection = event.path[0].id || event.path[1].id;
   computerSelection = computerPlay();
-  result.textContent = playRound(playerSelection, computerSelection);
+  result.style.fontWeight = "normal";
+  roundResult = playRound(playerSelection, computerSelection);
+  if (!roundResult) return;
+  result.textContent = roundResult;
   score.textContent = `${winCounter} : ${loseCounter}`;
   if (winCounter == 5) {
     result.textContent = "Good job, you won!";
+    result.style.fontWeight = "bold";
     winCounter = loseCounter = 0;
   } else if (loseCounter == 5) {
     result.textContent = "Unlucky, you lost!";
+    result.style.fontWeight = "bold";
     winCounter = loseCounter = 0;
   }
 }
+
+const options = ["rock", "paper", "scissors"];
 
 const buttons = document.querySelector("#buttons");
 const result = document.querySelector("#result");
