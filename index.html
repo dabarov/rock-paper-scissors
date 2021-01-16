@@ -6,52 +6,19 @@
     <title>Document</title>
   </head>
   <body>
-    <script>
-      function capitalize(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-      }
-
-      function computerPlay() {
-        let randomInt = Math.floor(Math.random() * 3);
-        return options[randomInt];
-      }
-
-      function playRound(playerSelection, computerSelection) {
-        if (playerSelection === computerSelection) {
-          return "Tied";
-        } else if (
-          (playerSelection === "rock" && computerSelection === "scissors") ||
-          (playerSelection === "paper" && computerSelection === "rock") ||
-          (playerSelection === "scissors" && computerSelection === "paper")
-        ) {
-          return "Won";
-        }
-        return "Lost";
-      }
-
-      function readPlayerSelection() {
-        let playerSelection = "";
-        while (!options.includes(playerSelection)) {
-          playerSelection = prompt("Choose one: rock, paper or scissors?");
-        }
-        return playerSelection;
-      }
-
-      function game() {
-        let playerSelection = "";
-        let computerSelection = "";
-        let roundResult = 0;
-        for (let i = 1; i <= 5; i++) {
-          playerSelection = readPlayerSelection();
-          computerSelection = computerPlay();
-          roundResult = playRound(playerSelection, computerSelection);
-          console.log(
-            `Round ${i}: You ${roundResult}. Computer chose ${computerSelection}`
-          );
-        }
-      }
-
-      const options = ["rock", "paper", "scissors"];
-    </script>
+    <main>
+      <header>
+        <h1>Rock Paper Scissors game</h1>
+        <h2>Current Score:</h2>
+        <h3 id="score"></h3>
+      </header>
+      <div id="buttons">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+      </div>
+      <div id="result"></div>
+    </main>
+    <script src="./game-logic.js"></script>
   </body>
 </html>
