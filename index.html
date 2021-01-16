@@ -7,16 +7,24 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <header>
+      <h1>Rock Paper Scissors game</h1>
+      <h2>Current Score: <span id="score"></span></h2>
+    </header>
     <main>
-      <header>
-        <h1>Rock Paper Scissors game</h1>
-        <h2>Current Score:</h2>
-        <h3 id="score"></h3>
-      </header>
       <div id="buttons">
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+        <button id="rock">
+          <img src="img/rock.svg" alt="Rock" />
+          <p>Rock</p>
+        </button>
+        <button id="paper">
+          <img src="img/paper.svg" alt="Paper" />
+          <p>Paper</p>
+        </button>
+        <button id="scissors">
+          <img src="img/scissors.svg" alt="Scissors" />
+          <p>Scissors</p>
+        </button>
       </div>
       <div id="result"></div>
     </main>
