@@ -20,7 +20,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function respondOnPlayersChoice(event) {
-  playerSelection = event.path[0].id;
+  playerSelection = event.path[0].id || event.path[1].id;
   computerSelection = computerPlay();
   result.textContent = playRound(playerSelection, computerSelection);
   score.textContent = `${winCounter} : ${loseCounter}`;
