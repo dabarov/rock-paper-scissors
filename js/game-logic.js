@@ -50,6 +50,7 @@ let loseCounter = 0;
 score.textContent = "0 : 0";
 
 buttons.addEventListener("click", (e) => respondOnPlayersChoice(e));
+buttons.addEventListener("tap", (e) => respondOnPlayersChoice(e));
 buttons.addEventListener("touchstart", () => {});
 buttons.addEventListener("touchend", () => {});
 buttons.addEventListener("touchcancel", () => {});
